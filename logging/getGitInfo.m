@@ -1,5 +1,6 @@
 function git_info = getGitInfo()
     [~, commit] = system('git show --format="%h" --no-patch');
+    commit = split(commit);
 
     [~, diff_stat] = system('git diff --stat');
     if diff_stat == ""
@@ -9,8 +10,10 @@ function git_info = getGitInfo()
     end
 
     [~, repositories] = system('git remote -v');
+    repositories = split(repositories);
     
-    git_info.repositories = repositories;
-    git_info.commit = commit;
+    git_info.repository_fetch = repositories{2};
+    git_info.repository_push = repositories{5};
+    git_info.commit = commit{1};
     git_info.dirty = dirty;
 end
