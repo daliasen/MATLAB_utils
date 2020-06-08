@@ -2,8 +2,8 @@ function git_info = getGitInfo()
     [~, commit] = system('git show --format="%h" --no-patch');
     commit = split(commit);
 
-    [~, diff_stat] = system('git diff --stat');
-    if diff_stat == ""
+    [~, status] = system('git status --porcelain --untracked-files=no');
+    if status == ""
         dirty = 0;
     else
         dirty = 1;
