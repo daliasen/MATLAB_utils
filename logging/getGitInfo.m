@@ -1,5 +1,5 @@
 function git_info = getGitInfo()
-    [~, commit] = system('git show --format="%h" --no-patch');
+    [~, commit] = system('git show-ref');
     commit = split(commit);
 
     [~, status] = system('git status --porcelain --untracked-files=no');
