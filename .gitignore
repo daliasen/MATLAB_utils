@@ -1,0 +1,4 @@
+# ignore MATLAB temp files
+*.asv
+*.m.swp
+*.m~
