@@ -1,4 +1,4 @@
-function exportParams(structure, paramsExport)
+function exportParams(structure, paramsExport, name)
 % Save the structure as a JOSN file.
 %
 % Inputs: 
@@ -6,11 +6,12 @@ function exportParams(structure, paramsExport)
 %   2) paramsExport - A structure containing the following parameters:
 %       t - timestamp,
 %       folder - output folder.
+%   3) name - A name for the JSON file (no extension).
 
     t = paramsExport.t;
     folder = paramsExport.folder;
 
-    fileName = ['params_', t, '.json'];
+    fileName = [name '_', t, '.json'];
     fileID = fopen([folder filesep fileName], 'w');
     
     fprintf(fileID, '%s', jsonencode(structure));
